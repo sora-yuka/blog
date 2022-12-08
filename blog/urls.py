@@ -1,5 +1,5 @@
 """blog URL Configuration
-
+^media/(?P<path>.*)$
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
 Examples:
@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/account/', include('applications.account.urls'))
-]
+    path('api/v1/account/', include('applications.account.urls')),
+    path('api/v1/post/', include('applications.post.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from rest_framework.generics import *
 from django.contrib.auth import get_user_model
+from django.contrib.auth.models import BaseUserManager
 from applications.account.serializer import (
     RegisterSerializer
 )
